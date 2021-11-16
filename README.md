@@ -37,8 +37,8 @@ Commit Message Structure
 
 |  목록   |  버전   |
 | :-----: | :-----: |
-|   npm   | 6.14.14 |
-| node.js | 14.17.5 |
+|   npm   | 8.1.0 |
+| node.js | 16.13.0 |
 
 ## Code Formatting
 
