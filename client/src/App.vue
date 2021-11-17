@@ -1,7 +1,15 @@
 <template>
   <div class="app">
-    <Home />
-    <MovieTrack />
+    <full-page ref="fullpage" :options="options" id="fullpage">
+      <div class="section">
+        <div>
+          <HomePage />
+        </div>
+      </div>
+      <div class="section main">
+        <div><MoviePage /></div>
+      </div>
+    </full-page>
   </div>
 </template>
 
@@ -9,8 +17,15 @@
 export default {
   name: "App",
   components: {
-    Home: () => import("@/pages/Home.vue"),
-    MovieTrack: () => import("@/pages/MovieTrack.vue"),
+    HomePage: () => import("@/pages/HomePage.vue"),
+    MoviePage: () => import("@/pages/MoviePage.vue"),
+  },
+  data() {
+    return {
+      options: {
+        anchors: ["landing", "main"],
+      },
+    };
   },
 };
 </script>

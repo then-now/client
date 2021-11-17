@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="wrap">
     <div>
       <TrackList />
     </div>
@@ -11,7 +11,7 @@
 
 <script>
 export default {
-  name: "MovieTrack",
+  name: "MoviePage",
   components: {
     TrackList: () => import("@/components/main/TrackList.vue"),
     TurnTable: () => import("@/components/main/TurnTable.vue"),
@@ -20,4 +20,8 @@ export default {
 </script>
 
 <style>
+.wrap {
+  background-color: blue;
+  width: 100px;
+}
 </style>
