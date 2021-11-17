@@ -17,7 +17,7 @@ export default new Vuex.Store({
 
 
     // 랜딩페이지
-    hoverActive: [false, false, false, false, false],
+    onHover: [false, false, false, false, false],
 
 
   },
@@ -28,8 +28,8 @@ export default new Vuex.Store({
     },
 
     // 랜딩페이지
-    SET_IS_HOVER: function (state, selected_id) {
-      return state.hoverActive.splice(selected_id, 1, !state.hoverActive[selected_id]);
+    SET_ON_HOVER: function (state, selected_id) {
+      return state.onHover.splice(selected_id, 1, !state.onHover[selected_id]);
     },
 
 
@@ -52,7 +52,7 @@ export default new Vuex.Store({
     // 랜딩페이지
     // 선택된 이미지 마우스 호버 감지
     HoverSection: function ({commit},selected_id) {
-      commit("SET_IS_HOVER", selected_id)
+      commit("SET_ON_HOVER", selected_id)
     },
 
     GetMovieData: function ({commit}, genre_id) {

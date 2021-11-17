@@ -13,15 +13,11 @@
 export default {
   name: "MoviePage",
   components: {
-    TrackList: () => import("@/components/main/TrackList.vue"),
-    TurnTable: () => import("@/components/main/TurnTable.vue"),
+    TrackList: () => import("@/containers/movie/TrackList.vue"),
+    TurnTable: () => import("@/containers/movie/TurnTable.vue"),
   },
 };
 </script>
 
 <style>
-.wrap {
-  background-color: blue;
-  width: 100px;
-}
 </style>
