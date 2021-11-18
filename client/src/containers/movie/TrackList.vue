@@ -1,7 +1,7 @@
 <template>
   <div>
     <logo-text class="logo-text" width="400px" fill="#3E3930" />
-    <h2>You make me want to be a better man</h2>
+    <div class="list-title">You make me want to be a better man</div>
     <div class="sound-track">
       <div class="sound-track-nav">
         <div class="nav-button">4F</div>
@@ -134,6 +134,13 @@ export default {
   display: flex;
   margin-left: 20px;
 }
+.list-title {
+  font-size: 18px;
+  font-weight: 500;
+  margin: 20px;
+  text-align: center;
+}
+
 /* 사운드 트랙 네비게이션 */
 .sound-track-nav {
   display: flex;
@@ -145,8 +152,6 @@ export default {
 .nav-button {
   width: 60px;
   height: 60px;
-  border: solid black 5px;
-  border-radius: 50%;
 
   text-align: center;
   line-height: 60px;

@@ -6,10 +6,14 @@
     <div class="turn-table">
       <TurnTable />
     </div>
-    <ButtonScroll class="button-scroll" />
+    <ButtonScroll
+      class="button-scroll"
+      fill="#0D3F5C"
+      title="explore our floors"
+    />
   </div>
 </template>
-
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script>
 export default {
   name: "MoviePage",
@@ -17,6 +21,12 @@ export default {
     TrackList: () => import("@/containers/movie/TrackList.vue"),
     TurnTable: () => import("@/containers/movie/TurnTable.vue"),
     ButtonScroll: () => import("@/components/buttons/ButtonScroll.vue"),
+  },
+  methods: {
+    // 마우스 클릭: 섹션 이동
+    moveSectionUp: function () {
+      fullpage_api.moveSectionUp();
+    },
   },
 };
 </script>
@@ -40,8 +50,7 @@ export default {
 }
 .button-scroll {
   position: fixed;
-  width: 200px;
   right: 30px;
-  bottom: 93vh;
+  margin-top: 5vh;
 }
 </style>

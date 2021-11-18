@@ -5,7 +5,12 @@
     <div class="menu-component">
       <HomeMenu @moveSectionDown="moveSectionDown" />
     </div>
-    <ButtonScroll class="button-scroll" />
+    <ButtonScroll
+      class="button-scroll"
+      title="The Whole Nine Yards"
+      sub-title="Between Calm And Passion"
+      type="down"
+    />
   </div>
 </template>
 
