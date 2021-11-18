@@ -32,11 +32,11 @@ export default {
   data: function () {
     return {
       items: [
-        { id: 4, title: "Lighting could strike" },
-        { id: 3, title: "Loving him was so easy for me" },
-        { id: 2, title: "To make each day count" },
-        { id: 1, title: "You make me want to be a better man" },
-        { id: 0, title: "Parting is such sweet sorrow" },
+        { id: 5, title: "Lighting could strike" },
+        { id: 4, title: "Loving him was so easy for me" },
+        { id: 3, title: "To make each day count" },
+        { id: 2, title: "You make me want to be a better man" },
+        { id: 1, title: "Parting is such sweet sorrow" },
       ],
     };
   },

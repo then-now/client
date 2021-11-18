@@ -1,11 +1,11 @@
 <template>
   <div class="wrap">
     <HomeImage @moveSectionDown="moveSectionDown" />
-
     <logo-text class="logo-component" />
     <div class="menu-component">
       <HomeMenu @moveSectionDown="moveSectionDown" />
     </div>
+    <ButtonScroll class="button-scroll" />
   </div>
 </template>
 
@@ -17,6 +17,7 @@ export default {
   components: {
     HomeImage: () => import("@/containers/home/HomeImage.vue"),
     HomeMenu: () => import("@/containers/home/HomeMenu.vue"),
+    ButtonScroll: () => import("@/components/buttons/ButtonScroll.vue"),
   },
   methods: {
     // 마우스 호버: 이미지 색상 변경
@@ -36,11 +37,9 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .wrap {
   display: flex;
-  flex-direction: column;
-  position: absolute;
   width: 100%;
   height: 100%;
 }
@@ -53,5 +52,11 @@ export default {
   position: fixed;
   right: 40px;
   top: 15vh;
+}
+.button-scroll {
+  position: fixed;
+  width: 200px;
+  right: 30px;
+  top: 90vh;
 }
 </style>

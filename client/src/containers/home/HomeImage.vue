@@ -1,7 +1,7 @@
 <template>
   <svg
     width="100vw"
-    height="968"
+    height="100vh"
     viewBox="0 0 1920 968"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
@@ -14,7 +14,7 @@
       width="54"
       height="57"
       fill="url(#4f-2)"
-      :style="{ opacity: onHover[4] ? '1' : '0' }"
+      :style="{ opacity: onHover[5] ? '1' : '0' }"
     />
     <rect
       class="toggle-image"
@@ -23,7 +23,7 @@
       width="46"
       height="48"
       fill="url(#4f-1)"
-      :style="{ opacity: onHover[4] ? '0' : '1' }"
+      :style="{ opacity: onHover[5] ? '0' : '1' }"
     />
     <rect
       class="toggle-image"
@@ -32,7 +32,7 @@
       width="89"
       height="58"
       fill="url(#3f-2)"
-      :style="{ opacity: onHover[3] ? '1' : '0' }"
+      :style="{ opacity: onHover[4] ? '1' : '0' }"
     />
     <rect
       class="toggle-image"
@@ -41,7 +41,7 @@
       width="83"
       height="58"
       fill="url(#3f-1)"
-      :style="{ opacity: onHover[3] ? '0' : '1' }"
+      :style="{ opacity: onHover[4] ? '0' : '1' }"
     />
     <rect
       class="toggle-image"
@@ -50,7 +50,7 @@
       width="54"
       height="56"
       fill="url(#2f-2)"
-      :style="{ opacity: onHover[2] ? '1' : '0' }"
+      :style="{ opacity: onHover[3] ? '1' : '0' }"
     />
     <rect
       class="toggle-image"
@@ -59,7 +59,7 @@
       width="46"
       height="60"
       fill="url(#2f-1)"
-      :style="{ opacity: onHover[2] ? '0' : '1' }"
+      :style="{ opacity: onHover[3] ? '0' : '1' }"
     />
     <rect
       class="toggle-image"
@@ -68,7 +68,7 @@
       width="179"
       height="211"
       fill="url(#1f-2)"
-      :style="{ opacity: onHover[1] ? '1' : '0' }"
+      :style="{ opacity: onHover[2] ? '1' : '0' }"
     />
     <rect
       class="toggle-image"
@@ -77,7 +77,7 @@
       width="179"
       height="208"
       fill="url(#1f-1)"
-      :style="{ opacity: onHover[1] ? '0' : '1' }"
+      :style="{ opacity: onHover[2] ? '0' : '1' }"
     />
     <rect
       class="toggle-image"
@@ -86,7 +86,7 @@
       width="123"
       height="103"
       fill="url(#b1-2)"
-      :style="{ opacity: onHover[0] ? '1' : '0' }"
+      :style="{ opacity: onHover[1] ? '1' : '0' }"
     />
     <rect
       class="toggle-image"
@@ -95,7 +95,7 @@
       width="127"
       height="102"
       fill="url(#b1-1)"
-      :style="{ opacity: onHover[0] ? '0' : '1' }"
+      :style="{ opacity: onHover[1] ? '0' : '1' }"
     />
     <rect x="740" y="101" width="418" height="766" fill="url(#building)" />
     <line y1="741.5" x2="1962" y2="741.5" stroke="#F6F5F4" stroke-width="5" />
@@ -105,7 +105,7 @@
       transform="translate(1006 154)"
       fill="white"
       fill-opacity="0"
-      id="4"
+      id="5"
       @mouseover="hoverImage"
       @mouseleave="hoverImage"
       @click="moveSectionDown"
@@ -116,7 +116,7 @@
       transform="translate(823 300)"
       fill="white"
       fill-opacity="0"
-      id="3"
+      id="4"
       @mouseover="hoverImage"
       @mouseleave="hoverImage"
       @click="moveSectionDown"
@@ -127,7 +127,7 @@
       transform="translate(909 452)"
       fill="white"
       fill-opacity="0"
-      id="2"
+      id="3"
       @mouseover="hoverImage"
       @mouseleave="hoverImage"
       @click="moveSectionDown"
@@ -138,7 +138,7 @@
       transform="translate(484 529)"
       fill="white"
       fill-opacity="0"
-      id="1"
+      id="2"
       @mouseover="hoverImage"
       @mouseleave="hoverImage"
       @click="moveSectionDown"
@@ -149,7 +149,7 @@
       transform="translate(805 744)"
       fill="white"
       fill-opacity="0"
-      id="0"
+      id="1"
       @mouseover="hoverImage"
       @mouseleave="hoverImage"
       @click="moveSectionDown"

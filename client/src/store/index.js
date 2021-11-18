@@ -13,13 +13,15 @@ export default new Vuex.Store({
     onSpinning: false,
 
     // API 요청 리스트
+    selectedGenre: "",
     playList: Array,
 
 
-    // 랜딩페이지
-    onHover: [false, false, false, false, false],
+    // Home 페이지
+    onHover: [false,false, false, false, false, false],
 
-
+    // Movie 페이지
+    onClick: Number,
   },
   mutations: {
     // 사운드트랙
@@ -57,7 +59,6 @@ export default new Vuex.Store({
 
     GetMovieData: function ({commit}, genre_id) {
       commit("SET_MOVIE_DATA", genre_id)
-
     },
 
   },
