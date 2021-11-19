@@ -81,7 +81,7 @@ export default {
 .text {
   display: flex;
   flex-direction: column;
-  justify-items: center;
+  text-align: left;
 }
 
 .up {

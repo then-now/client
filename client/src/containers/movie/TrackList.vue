@@ -11,9 +11,14 @@
         <div class="nav-button">B1</div>
       </div>
       <div class="sound-track-list">
-        <div v-for="(item, idx) in items" class="menu-item" :key="idx">
-          <p class="sound-track-title">{{ item.soundTrackTitle }}</p>
-          <p class="movie-title">{{ item.movieTitle }}</p>
+        <div
+          v-for="(item, idx) in playList"
+          class="menu-item"
+          :key="idx"
+          @click="clickMusic(idx)"
+        >
+          <p :idx="idx" class="sound-track-title">{{ item.title }}</p>
+          <p :idx="idx" class="movie-title">{{ item.movie_id.title }}</p>
         </div>
       </div>
     </div>
@@ -21,110 +26,17 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
 export default {
   name: "TrackList",
-  data: function () {
-    return {
-      items: [
-        {
-          soundTrackTitle:
-            "Concerto in C Major for Mandolin, Strings and Harpsichord, P. 134: III. Allegro",
-          movieTitle: "Between Calm And Passion",
-        },
-        {
-          soundTrackTitle: "The Whole Nine Yards",
-          movieTitle: "Between Calm And Passion",
-        },
-        {
-          soundTrackTitle: "The Whole Nine Yards",
-          movieTitle: "Between Calm And Passion",
-        },
-        {
-          soundTrackTitle: "The Whole Nine Yards",
-          movieTitle: "Between Calm And Passion",
-        },
-        {
-          soundTrackTitle: "The Whole Nine Yards",
-          movieTitle: "Between Calm And Passion",
-        },
-        {
-          soundTrackTitle: "The Whole Nine Yards",
-          movieTitle: "Between Calm And Passion",
-        },
-        {
-          soundTrackTitle: "The Whole Nine Yards",
-          movieTitle: "Between Calm And Passion",
-        },
-        {
-          soundTrackTitle: "The Whole Nine Yards",
-          movieTitle: "Between Calm And Passion",
-        },
-        {
-          soundTrackTitle: "The Whole Nine Yards",
-          movieTitle: "Between Calm And Passion",
-        },
-        {
-          soundTrackTitle: "The Whole Nine Yards",
-          movieTitle: "Between Calm And Passion",
-        },
-        {
-          soundTrackTitle: "The Whole Nine Yards",
-          movieTitle: "Between Calm And Passion",
-        },
-        {
-          soundTrackTitle: "The Whole Nine Yards",
-          movieTitle: "Between Calm And Passion",
-        },
-        {
-          soundTrackTitle: "The Whole Nine Yards",
-          movieTitle: "Between Calm And Passion",
-        },
-        {
-          soundTrackTitle: "The Whole Nine Yards",
-          movieTitle: "Between Calm And Passion",
-        },
-        {
-          soundTrackTitle: "The Whole Nine Yards",
-          movieTitle: "Between Calm And Passion",
-        },
-        {
-          soundTrackTitle: "The Whole Nine Yards",
-          movieTitle: "Between Calm And Passion",
-        },
-        {
-          soundTrackTitle: "The Whole Nine Yards",
-          movieTitle: "Between Calm And Passion",
-        },
-        {
-          soundTrackTitle: "The Whole Nine Yards",
-          movieTitle: "Between Calm And Passion",
-        },
-        {
-          soundTrackTitle: "The Whole Nine Yards",
-          movieTitle: "Between Calm And Passion",
-        },
-        {
-          soundTrackTitle: "The Whole Nine Yards",
-          movieTitle: "Between Calm And Passion",
-        },
-        {
-          soundTrackTitle: "The Whole Nine Yards",
-          movieTitle: "Between Calm And Passion",
-        },
-        {
-          soundTrackTitle: "The Whole Nine Yards",
-          movieTitle: "Between Calm And Passion",
-        },
-        {
-          soundTrackTitle: "The Whole Nine Yards",
-          movieTitle: "Between Calm And Passion",
-        },
-        {
-          soundTrackTitle: "The Whole Nine Yards",
-          movieTitle: "Between Calm And Passion",
-        },
-      ],
-    };
+  computed: {
+    ...mapState(["playList"]),
+  },
+  methods: {
+    // 음악 클릭: 음악 재생
+    clickMusic: function (idx) {
+      this.$store.dispatch("PlayMusic", idx);
+    },
   },
 };
 </script>
@@ -156,7 +68,7 @@ export default {
   text-align: center;
   line-height: 60px;
   font-size: 30px;
-  font-weight: 800;
+  font-weight: 600;
 }
 
 /* 사운드트랙 리스트  */
@@ -180,7 +92,7 @@ export default {
 
 /* 사운드트랙 아이템 */
 .menu-item {
-  height: 100px;
+  height: 40px;
   border-bottom: dotted 1px #3e3930;
   margin: 5px;
 }

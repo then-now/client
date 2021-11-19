@@ -16,15 +16,19 @@
         fill="white"
         fill-opacity="0.01"
       />
-      <rect
-        class="lp"
-        x="51"
-        y="100"
-        width="770"
-        height="770"
-        rx="385"
-        fill="url(#lp-playing)"
-      />
+      <transition name="fade">
+        <rect
+          v-if="soundtrack"
+          class="lp"
+          x="51"
+          y="100"
+          width="770"
+          height="770"
+          rx="385"
+          fill="url(#lp-playing)"
+        />
+      </transition>
+
       <rect
         x="308"
         y="357"
@@ -33,8 +37,23 @@
         rx="127.5"
         fill="#303030"
       />
-      <rect x="319" y="368" width="234" height="234" rx="117" fill="#888888" />
-      <rect x="879" y="146" width="123" height="123" fill="url(#stab)" />
+      <rect
+        class="soundtrack-title"
+        x="319"
+        y="368"
+        width="234"
+        height="234"
+        rx="117"
+        fill="#888888"
+      />
+      <rect
+        class="movie-title"
+        x="879"
+        y="146"
+        width="123"
+        height="123"
+        fill="url(#stab)"
+      />
       <rect
         x="602.844"
         width="466"
@@ -42,6 +61,31 @@
         transform="rotate(5 602.844 0)"
         fill="url(#tonearm)"
       />
+      <transition name="fade">
+        <text
+          v-if="soundtrack"
+          x="437"
+          y="480"
+          text-anchor="middle"
+          fill="#F6F5F4"
+          font-size="bigger"
+        >
+          {{ soundtrack.title }}
+        </text>
+      </transition>
+      <transition name="fade">
+        <text
+          v-if="soundtrack"
+          x="437"
+          y="510"
+          text-anchor="middle"
+          fill="#F6F5F4"
+          font-size="smaller"
+        >
+          {{ soundtrack.movie_id.title }}
+        </text>
+      </transition>
+
       <defs>
         <pattern
           id="lp-playing"
@@ -50,7 +94,8 @@
           height="1"
         >
           <image
-            href="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/Atj7iBxDqpRHZkuV3CreinuhGdy.jpg"
+            v-if="soundtrack"
+            :href="soundtrack.movie_id.poster_path"
             transform="translate(0 -0.25) scale(0.00166667)"
           />
         </pattern>
@@ -102,11 +147,17 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
+
 export default {
   name: "TurnTable",
   components: {
     ButtonRound: () => import("@/components/buttons/ButtonRound.vue"),
   },
+  computed: {
+    ...mapState(["soundtrack"]),
+  },
+
   data: function () {
     return {
       items: [
@@ -150,11 +201,26 @@ export default {
   border: none !important;
   stroke: transparent;
   stroke-width: 0px;
+
+  transition: all 1.2s;
+  transition-timing-function: csubic-bezier(0.28, 0.79, 0.36, 1.18);
 }
 
 @keyframes rotate_image {
   100% {
     transform: rotate(360deg);
   }
+}
+.soundtrack-title {
+  font-size: 20px;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>

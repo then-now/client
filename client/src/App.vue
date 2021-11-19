@@ -10,10 +10,13 @@
         <div><MoviePage /></div>
       </div>
     </full-page>
+    <audio v-if="soundtrack" id="player" :src="soundtrack.track_path"></audio>
   </div>
 </template>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 
 <script>
+import { mapState } from "vuex";
 export default {
   name: "App",
   components: {
@@ -22,12 +25,29 @@ export default {
   },
   data() {
     return {
+      // fullpage
       options: {
         anchors: ["landing", "main"],
         sectionsColor: ["#0D3F5C", "#F6F5F4"],
         normalScrollElements: ".sound-track-list",
       },
     };
+  },
+  mounted() {
+    // fullpage 스크롤 기능
+    // fullpage_api.setAllowScrolling(false);
+  },
+  computed: {
+    ...mapState(["soundtrack"]),
+  },
+  updated() {
+    this.$nextTick(function () {
+      if (this.soundtrack) {
+        var audio = document.getElementById("player");
+        console.log(audio);
+        audio.play();
+      }
+    });
   },
 };
 </script>

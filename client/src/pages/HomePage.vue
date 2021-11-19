@@ -1,14 +1,15 @@
 <template>
   <div class="wrap">
-    <HomeImage @moveSectionDown="moveSectionDown" />
+    <HomeImage />
     <logo-text class="logo-component" />
     <div class="menu-component">
-      <HomeMenu @moveSectionDown="moveSectionDown" />
+      <HomeMenu />
     </div>
     <ButtonScroll
+      v-if="soundtrack"
       class="button-scroll"
-      title="The Whole Nine Yards"
-      sub-title="Between Calm And Passion"
+      :title="soundtrack.title"
+      :sub-title="soundtrack.movie_id.title"
       type="down"
     />
   </div>
@@ -17,6 +18,7 @@
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script>
 import { mapState } from "vuex";
+
 export default {
   name: "HomePage",
   components: {
@@ -24,20 +26,8 @@ export default {
     HomeMenu: () => import("@/containers/home/HomeMenu.vue"),
     ButtonScroll: () => import("@/components/buttons/ButtonScroll.vue"),
   },
-  methods: {
-    // 마우스 호버: 이미지 색상 변경
-    hoverImage: function (e) {
-      this.$store.dispatch("HoverImage", e.target.id);
-    },
-
-    // 마우스 클릭: 섹션 이동
-    moveSectionDown: function () {
-      // this.$store.dispatch("GetMovieData", e.target.id);
-      fullpage_api.moveSectionDown();
-    },
-  },
   computed: {
-    ...mapState(["hoverActive"]),
+    ...mapState(["soundtrack"]),
   },
 };
 </script>

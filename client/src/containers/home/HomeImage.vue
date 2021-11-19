@@ -345,24 +345,26 @@
     </defs>
   </svg>
 </template>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 
 <script>
 import { mapState } from "vuex";
 export default {
   name: "HomeImage",
   methods: {
-    // 마우스 호버
+    // 마우스 호버: 이미지 색상 변경
     hoverImage: function (e) {
       this.$store.dispatch("HoverSection", e.target.id);
     },
 
-    // 마우스 클릭
-    moveSectionDown: function () {
-      this.$emit("moveSectionDown");
+    // 마우스 클릭: 섹션 이동
+    moveSectionDown: function (e) {
+      this.$store.dispatch("GetMovieData", e.target.id);
+      fullpage_api.moveSectionDown();
     },
   },
   computed: {
-    ...mapState(["onHover"]),
+    ...mapState(["onHover", "hoverActive"]),
   },
 };
 </script>
