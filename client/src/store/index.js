@@ -236,8 +236,14 @@ export default new Vuex.Store({
 
     // Home 페이지
     onHover: [false,false, false, false, false, false],
-
   },
+
+  getters: {
+    isHover: function(state) {
+      return state.onHover.some(item => item === true)
+    }
+  },
+
   mutations: {
     // 사운드트랙
     SET_SOUNDTRACK: function (state, idx) {

@@ -35,7 +35,7 @@ export default {
   },
   mounted() {
     // fullpage 스크롤 기능
-    // fullpage_api.setAllowScrolling(false);
+    fullpage_api.setAllowScrolling(false);
   },
   computed: {
     ...mapState(["soundtrack"]),

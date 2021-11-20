@@ -348,27 +348,25 @@
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 
 <script>
-import { mapState } from "vuex";
+import { mapState, mapGetters } from "vuex";
 import _ from "lodash";
 export default {
   name: "HomeImage",
   data: function () {
     return {
-      active: true,
       activeImage: [false, false, false, false, false, false],
     };
   },
   methods: {
     activateImage: function () {
       this.activeImage = [false, false, false, false, false, false];
-      if (this.active) {
+      if (!this.isHover) {
         this.activeImage[_.random(1, 5)] = true;
       }
     },
 
     // 마우스 호버: 이미지 색상 변경
     hoverImage: function (e) {
-      this.active = !this.active;
       this.$store.dispatch("HoverSection", e.target.getAttribute("value"));
     },
 
@@ -379,18 +377,16 @@ export default {
     },
   },
   computed: {
-    ...mapState(["onHover", "hoverActive"]),
-    activeImage: function () {
-      const res = [false, false, false, false, false, false];
-    },
+    ...mapState(["onHover"]),
+    ...mapGetters(["isHover"]),
   },
   watch: {
-    active: function () {
+    isHover: function () {
       this.activeImage = [false, false, false, false, false, false];
     },
   },
   mounted() {
-    this.landing = setInterval(this.activateImage, 2500);
+    this.landing = setInterval(this.activateImage, 3500);
   },
 };
 </script>
