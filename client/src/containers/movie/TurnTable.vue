@@ -19,6 +19,7 @@
       <transition name="fade">
         <rect
           v-if="soundtrack"
+          :key="soundtrack.id"
           class="lp"
           x="51"
           y="100"
@@ -76,6 +77,7 @@
       <transition name="fade">
         <text
           v-if="soundtrack"
+          :key="soundtrack.id"
           x="437"
           y="510"
           text-anchor="middle"
@@ -85,7 +87,7 @@
           {{ soundtrack.movie_id.title }}
         </text>
       </transition>
-
+      ``
       <defs>
         <pattern
           id="lp-playing"
@@ -211,6 +213,7 @@ export default {
     transform: rotate(360deg);
   }
 }
+
 .soundtrack-title {
   font-size: 20px;
 }

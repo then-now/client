@@ -1,16 +1,7 @@
 <template>
   <div class="button">
     <div v-if="ottUrl">
-      <a href="">
-        <div
-          class="circle"
-          :style="{
-            backgroundColor: active ? '#DBDBDB' : '#a5a4a4',
-          }"
-          @mouseover="active = !active"
-          @mouseout="active = !active"
-        ></div
-      ></a>
+      <a href=""> <div class="circle activate"></div></a>
       <div class="text">{{ buttonName }}</div>
     </div>
     <div v-else>
@@ -45,6 +36,11 @@ export default {
   margin: 5px;
   transition: all 0.5s;
 }
+
+.activate:hover {
+  background: #dbdbdb;
+}
+
 .text {
   text-align: center;
   font-size: 12px;

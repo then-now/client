@@ -8,7 +8,7 @@
       v-for="(item, idx) in items"
       class="menu"
       :key="idx"
-      :id="item.id"
+      :value="item.id"
       :style="{
         color: onHover[item.id]
           ? 'rgba(243, 236, 234, 1)'
@@ -45,12 +45,12 @@ export default {
   methods: {
     // 마우스 호버: 이미지 색상 변경
     hoverItem: function (e) {
-      this.$store.dispatch("HoverSection", e.target.id);
+      this.$store.dispatch("HoverSection", e.target.getAttribute("value"));
     },
 
     // 마우스 클릭: 섹션 이동
     moveSectionDown: function (e) {
-      this.$store.dispatch("GetMovieData", e.target.id);
+      this.$store.dispatch("GetMovieData", e.target.getAttribute("value"));
       fullpage_api.moveSectionDown();
     },
   },

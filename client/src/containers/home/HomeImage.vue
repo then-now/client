@@ -14,7 +14,7 @@
       width="54"
       height="57"
       fill="url(#4f-2)"
-      :style="{ opacity: onHover[5] ? '1' : '0' }"
+      :style="{ opacity: onHover[5] || activeImage[5] ? '1' : '0' }"
     />
     <rect
       class="toggle-image"
@@ -23,7 +23,7 @@
       width="46"
       height="48"
       fill="url(#4f-1)"
-      :style="{ opacity: onHover[5] ? '0' : '1' }"
+      :style="{ opacity: onHover[5] || activeImage[5] ? '0' : '1' }"
     />
     <rect
       class="toggle-image"
@@ -32,7 +32,7 @@
       width="89"
       height="58"
       fill="url(#3f-2)"
-      :style="{ opacity: onHover[4] ? '1' : '0' }"
+      :style="{ opacity: onHover[4] || activeImage[4] ? '1' : '0' }"
     />
     <rect
       class="toggle-image"
@@ -41,7 +41,7 @@
       width="83"
       height="58"
       fill="url(#3f-1)"
-      :style="{ opacity: onHover[4] ? '0' : '1' }"
+      :style="{ opacity: onHover[4] || activeImage[4] ? '0' : '1' }"
     />
     <rect
       class="toggle-image"
@@ -50,7 +50,7 @@
       width="54"
       height="56"
       fill="url(#2f-2)"
-      :style="{ opacity: onHover[3] ? '1' : '0' }"
+      :style="{ opacity: onHover[3] || activeImage[3] ? '1' : '0' }"
     />
     <rect
       class="toggle-image"
@@ -59,7 +59,7 @@
       width="46"
       height="60"
       fill="url(#2f-1)"
-      :style="{ opacity: onHover[3] ? '0' : '1' }"
+      :style="{ opacity: onHover[3] || activeImage[3] ? '0' : '1' }"
     />
     <rect
       class="toggle-image"
@@ -68,7 +68,7 @@
       width="179"
       height="211"
       fill="url(#1f-2)"
-      :style="{ opacity: onHover[2] ? '1' : '0' }"
+      :style="{ opacity: onHover[2] || activeImage[2] ? '1' : '0' }"
     />
     <rect
       class="toggle-image"
@@ -77,7 +77,7 @@
       width="179"
       height="208"
       fill="url(#1f-1)"
-      :style="{ opacity: onHover[2] ? '0' : '1' }"
+      :style="{ opacity: onHover[2] || activeImage[2] ? '0' : '1' }"
     />
     <rect
       class="toggle-image"
@@ -86,7 +86,7 @@
       width="123"
       height="103"
       fill="url(#b1-2)"
-      :style="{ opacity: onHover[1] ? '1' : '0' }"
+      :style="{ opacity: onHover[1] || activeImage[1] ? '1' : '0' }"
     />
     <rect
       class="toggle-image"
@@ -95,7 +95,7 @@
       width="127"
       height="102"
       fill="url(#b1-1)"
-      :style="{ opacity: onHover[1] ? '0' : '1' }"
+      :style="{ opacity: onHover[1] || activeImage[1] ? '0' : '1' }"
     />
     <rect x="740" y="101" width="418" height="766" fill="url(#building)" />
     <line y1="741.5" x2="1962" y2="741.5" stroke="#F6F5F4" stroke-width="5" />
@@ -105,7 +105,7 @@
       transform="translate(1006 154)"
       fill="white"
       fill-opacity="0"
-      id="5"
+      value="5"
       @mouseover="hoverImage"
       @mouseleave="hoverImage"
       @click="moveSectionDown"
@@ -116,7 +116,7 @@
       transform="translate(823 300)"
       fill="white"
       fill-opacity="0"
-      id="4"
+      value="4"
       @mouseover="hoverImage"
       @mouseleave="hoverImage"
       @click="moveSectionDown"
@@ -127,7 +127,7 @@
       transform="translate(909 452)"
       fill="white"
       fill-opacity="0"
-      id="3"
+      value="3"
       @mouseover="hoverImage"
       @mouseleave="hoverImage"
       @click="moveSectionDown"
@@ -138,7 +138,7 @@
       transform="translate(484 529)"
       fill="white"
       fill-opacity="0"
-      id="2"
+      value="2"
       @mouseover="hoverImage"
       @mouseleave="hoverImage"
       @click="moveSectionDown"
@@ -149,7 +149,7 @@
       transform="translate(805 744)"
       fill="white"
       fill-opacity="0"
-      id="1"
+      value="1"
       @mouseover="hoverImage"
       @mouseleave="hoverImage"
       @click="moveSectionDown"
@@ -349,22 +349,48 @@
 
 <script>
 import { mapState } from "vuex";
+import _ from "lodash";
 export default {
   name: "HomeImage",
+  data: function () {
+    return {
+      active: true,
+      activeImage: [false, false, false, false, false, false],
+    };
+  },
   methods: {
+    activateImage: function () {
+      this.activeImage = [false, false, false, false, false, false];
+      if (this.active) {
+        this.activeImage[_.random(1, 5)] = true;
+      }
+    },
+
     // 마우스 호버: 이미지 색상 변경
     hoverImage: function (e) {
-      this.$store.dispatch("HoverSection", e.target.id);
+      this.active = !this.active;
+      this.$store.dispatch("HoverSection", e.target.getAttribute("value"));
     },
 
     // 마우스 클릭: 섹션 이동
     moveSectionDown: function (e) {
-      this.$store.dispatch("GetMovieData", e.target.id);
+      this.$store.dispatch("GetMovieData", e.target.getAttribute("value"));
       fullpage_api.moveSectionDown();
     },
   },
   computed: {
     ...mapState(["onHover", "hoverActive"]),
+    activeImage: function () {
+      const res = [false, false, false, false, false, false];
+    },
+  },
+  watch: {
+    active: function () {
+      this.activeImage = [false, false, false, false, false, false];
+    },
+  },
+  mounted() {
+    this.landing = setInterval(this.activateImage, 2500);
   },
 };
 </script>

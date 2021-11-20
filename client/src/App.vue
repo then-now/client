@@ -43,8 +43,7 @@ export default {
   updated() {
     this.$nextTick(function () {
       if (this.soundtrack) {
-        var audio = document.getElementById("player");
-        console.log(audio);
+        const audio = document.getElementById("player");
         audio.play();
       }
     });
