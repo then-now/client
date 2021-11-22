@@ -364,7 +364,6 @@ export default {
         this.activeImage[_.random(1, 5)] = true;
       }
     },
-
     // 마우스 호버: 이미지 색상 변경
     hoverImage: function (e) {
       this.$store.dispatch("HoverSection", e.target.getAttribute("value"));

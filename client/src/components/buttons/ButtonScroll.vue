@@ -37,7 +37,7 @@
           :fill="fill"
         />
       </svg>
-      <div class="text">
+      <div class="text" :style="{ color: fill }">
         <p class="title">{{ title }}</p>
         <p class="sub-title">{{ subTitle }}</p>
       </div>

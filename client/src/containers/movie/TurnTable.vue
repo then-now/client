@@ -20,7 +20,7 @@
         <rect
           v-if="soundtrack"
           :key="soundtrack.id"
-          class="lp"
+          :class="'lp ' + (soundtrack ? 'running' : 'paused')"
           x="51"
           y="100"
           width="770"
@@ -56,11 +56,13 @@
         fill="url(#stab)"
       />
       <rect
+        class="tonearm"
         x="602.844"
         width="466"
         height="744"
-        transform="rotate(5 602.844 0)"
         fill="url(#tonearm)"
+        transform-origin="90% 28%"
+        :transform="soundtrack ? 'rotate(5 -400 -200)' : 'rotate(-15 0 0)'"
       />
       <transition name="fade">
         <text
@@ -141,7 +143,7 @@
       </defs>
     </svg>
     <div class="ott-list">
-      <div v-for="(item, idx) in items" class="menu" :key="idx">
+      <div v-for="(item, idx) in ottData" class="menu" :key="idx">
         <ButtonRound :button-name="item.name" :ott-url="item.ottUrl" />
       </div>
     </div>
@@ -157,17 +159,7 @@ export default {
     ButtonRound: () => import("@/components/buttons/ButtonRound.vue"),
   },
   computed: {
-    ...mapState(["soundtrack"]),
-  },
-
-  data: function () {
-    return {
-      items: [
-        { name: "whatcha", ottUrl: "" },
-        { name: "wavve", ottUrl: "asdf" },
-        { name: "netflix", ottUrl: "sadf" },
-      ],
-    };
+    ...mapState(["soundtrack", "ottData"]),
   },
 
   methods: {
@@ -178,7 +170,7 @@ export default {
 };
 </script>
 
-<style >
+<style scoped>
 .turntable-lp {
   background: #3e3930;
   position: absolute;
@@ -197,15 +189,16 @@ export default {
 }
 
 .lp {
-  animation: rotate_image 6s linear infinite;
+  animation: rotate_image 3s linear infinite;
+  animation-delay: 0.8s;
   transform-origin: 38.4% 56.3%;
+}
 
-  border: none !important;
-  stroke: transparent;
-  stroke-width: 0px;
-
-  transition: all 1.2s;
-  transition-timing-function: csubic-bezier(0.28, 0.79, 0.36, 1.18);
+.running {
+  animation-play-state: running;
+}
+.paused {
+  animation-play-state: paused;
 }
 
 @keyframes rotate_image {
@@ -217,7 +210,10 @@ export default {
 .soundtrack-title {
   font-size: 20px;
 }
-
+.tonearm {
+  transition: all 1.2s;
+  transition-timing-function: csubic-bezier(0.28, 0.79, 0.36, 1.18);
+}
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.5s;

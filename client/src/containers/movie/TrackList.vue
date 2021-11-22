@@ -10,7 +10,7 @@
       <div class="sound-track-nav">
         <div
           v-for="(item, idx) in navItem"
-          class="nav-button"
+          :class="'nav-button' + (selectedGenre === item.id ? ' active' : '')"
           :key="idx"
           :id="'nav-button-' + item.id"
           :value="item.id"
@@ -18,12 +18,18 @@
         >
           {{ item.name }}
         </div>
-        <div class="highlight" id="levelCircle"></div>
+        <!-- <div class="highlight" id="levelCircle"></div> -->
       </div>
+
       <div class="sound-track-list">
         <div
           v-for="(item, idx) in playList"
-          class="menu-item"
+          :class="
+            'menu-item' +
+            (playingTrack === idx && playingGenre === selectedGenre
+              ? ' selected'
+              : '')
+          "
           :key="idx"
           @click="clickMusic(idx)"
         >
@@ -61,7 +67,6 @@ export default {
     };
   },
   methods: {
-    // 음악 클릭: 음악 재생
     clickMusic: function (idx) {
       this.$store.dispatch("PlayMusic", idx);
     },
@@ -71,7 +76,7 @@ export default {
   },
 
   computed: {
-    ...mapState(["playList", "selectedGenre"]),
+    ...mapState(["playList", "selectedGenre", "playingTrack", "playingGenre"]),
   },
   watch: {
     selectedGenre() {
@@ -93,14 +98,14 @@ export default {
 };
 </script>
 
-<style >
+<style scoped>
 .sound-track {
   display: flex;
   margin-left: 20px;
 }
 .list-title {
   font-size: 18px;
-  font-weight: 500;
+  font-weight: 700;
   margin: 20px;
   text-align: center;
   transition: all 0.5s;
@@ -119,10 +124,17 @@ export default {
   width: 60px;
   height: 60px;
 
+  color: #a5a4a4;
   text-align: center;
   line-height: 60px;
   font-size: 30px;
-  font-weight: 600;
+  font-weight: 400;
+  transition: all 0.5s;
+}
+
+.active {
+  color: #3e3930;
+  font-weight: 800;
 }
 
 .highlight {
@@ -159,12 +171,14 @@ export default {
 .menu-item {
   height: 40px;
   border-bottom: dotted 1px #3e3930;
-  margin: 5px;
+  margin-top: 2px;
+  padding: 3px;
+  transition: all 0.1s;
 }
 .sound-track-title {
   font-size: 15px;
   font-weight: 500;
-  margin: 0;
+  margin: 0px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -172,15 +186,19 @@ export default {
 .movie-title {
   font-size: 12px;
   font-weight: 200;
-  margin: 3px;
+  margin-top: 3px;
+
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
+.selected {
+  color: #a5a4a4;
+}
 
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity 0.1s;
+  transition: opacity 0.5s;
 }
 .fade-enter,
 .fade-leave-to {

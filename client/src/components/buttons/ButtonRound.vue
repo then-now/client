@@ -1,11 +1,11 @@
 <template>
   <div class="button">
     <div v-if="ottUrl">
-      <a href=""> <div class="circle activate"></div></a>
+      <a :href="ottUrl" target="_blank"> <div class="circle activate" /></a>
       <div class="text">{{ buttonName }}</div>
     </div>
     <div v-else>
-      <div class="circle deactivate"></div>
+      <div class="circle deactivate" />
       <div class="text no-url">{{ buttonName }}</div>
     </div>
   </div>
@@ -26,7 +26,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .circle {
   width: 45px;
   height: 45px;
@@ -38,7 +38,7 @@ export default {
 }
 
 .activate:hover {
-  background: #dbdbdb;
+  background: #e3e3e3;
 }
 
 .text {
@@ -48,7 +48,7 @@ export default {
   color: #a5a4a4;
 }
 .deactivate {
-  background-color: #959595;
+  background-color: rgb(120, 120, 120);
 }
 .no-url {
   color: #d0d0d0;

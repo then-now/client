@@ -2,7 +2,13 @@
   <div class="menu">
     <logo-image />
 
-    <h2 class="menu title">explore our floors</h2>
+    <h1 class="menu title">
+      Choose your mood,
+      <br />
+      Meet a classic movie through music
+    </h1>
+    <h2 class="menu subtitle">hope this building finds you in good mood</h2>
+
     <br />
     <p
       v-for="(item, idx) in items"
@@ -72,8 +78,17 @@ export default {
   transition: all 0.5s;
   transition-timing-function: csubic-bezier(0.28, 0.79, 0.36, 1.18);
 }
+
 .title {
-  font-size: 20px;
+  margin: 0px;
+  font-size: 15px;
+  color: rgba(243, 236, 234, 1);
+  line-height: 15px;
+}
+.subtitle {
+  font-weight: 300;
+  margin-top: 6px;
+  font-size: 10px;
   color: rgba(243, 236, 234, 1);
 }
 </style>
