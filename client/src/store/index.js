@@ -5,10 +5,16 @@ import Vuex from 'vuex'
 import axios from 'axios'
 import SERVER from '@/api/drf.js'
 
+// PersistedState
+import createPersistedState from 'vuex-persistedstate';
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
+  plugins:[
+    createPersistedState()
+  ],
+
   state: {
     // 사운드트랙
     // 오디오 플레이어
