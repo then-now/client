@@ -78,7 +78,9 @@ export default {
   width: 200px;
   align-items: center;
 }
+
 .text {
+  width: 150px;
   display: flex;
   flex-direction: column;
   text-align: left;
