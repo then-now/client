@@ -3,6 +3,11 @@
     <full-page ref="fullpage" :options="options" id="fullpage">
       <div class="section">
         <div>
+          <LandingPage />
+        </div>
+      </div>
+      <div class="section">
+        <div>
           <HomePage />
         </div>
       </div>
@@ -20,6 +25,7 @@ import { mapState } from "vuex";
 export default {
   name: "App",
   components: {
+    LandingPage: () => import("@/pages/LandingPage.vue"),
     HomePage: () => import("@/pages/HomePage.vue"),
     MoviePage: () => import("@/pages/MoviePage.vue"),
   },
@@ -27,8 +33,8 @@ export default {
     return {
       // fullpage 옵션 설정
       options: {
-        anchors: ["landing", "main"],
-        sectionsColor: ["#0D3F5C", "#F6F5F4"],
+        anchors: ["landing", "home", "main"],
+        sectionsColor: ["#0D3F5C", "#0D3F5C", "#F6F5F4"],
         normalScrollElements: ".sound-track-list",
       },
     };

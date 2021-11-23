@@ -1,6 +1,10 @@
 <template>
   <div>
-    <logo-text class="logo-text" width="400px" fill="#3E3930" />
+    <div>
+      <div @click="moveToTop">
+        <logo-text class="logo-text" width="400px" fill="#3E3930" />
+      </div>
+    </div>
     <transition name="fade" mode="out-in">
       <div class="list-title" :key="selectedGenre">
         {{ genreTitle[selectedGenre - 1] }}
@@ -42,7 +46,7 @@
 </template>
 
 
-
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script>
 import { mapState } from "vuex";
 
@@ -72,6 +76,9 @@ export default {
     },
     selectGenre: function (e) {
       this.$store.dispatch("GetMovieData", e.target.getAttribute("value"));
+    },
+    moveToTop: function () {
+      fullpage_api.moveTo("landing");
     },
   },
 

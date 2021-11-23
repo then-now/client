@@ -50,7 +50,7 @@ export default {
 }
 .button-scroll {
   position: fixed;
-  right: 30px;
+  right: 40px;
   margin-top: 5vh;
 }
 </style>

@@ -2,12 +2,8 @@
   <div class="menu">
     <logo-image />
 
-    <h1 class="menu title">
-      Choose your mood,
-      <br />
-      Meet a classic movie through music
-    </h1>
-    <h2 class="menu subtitle">hope this building finds you in good mood</h2>
+    <h1 class="menu title">Hope this building finds you in good mood</h1>
+    <h2 class="menu subtitle">Select your mood bellow</h2>
 
     <br />
     <p
@@ -86,9 +82,9 @@ export default {
   line-height: 15px;
 }
 .subtitle {
-  font-weight: 300;
+  font-weight: 200;
   margin-top: 6px;
   font-size: 10px;
-  color: rgba(243, 236, 234, 1);
+  color: rgb(218, 218, 218, 1);
 }
 </style>

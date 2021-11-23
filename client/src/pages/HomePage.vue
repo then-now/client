@@ -1,7 +1,9 @@
 <template>
   <div class="wrap">
     <HomeImage />
-    <logo-text class="logo-component" />
+    <div @click="moveSectionUp">
+      <logo-text class="logo-component" />
+    </div>
     <div class="menu-component">
       <HomeMenu />
     </div>
@@ -26,6 +28,12 @@ export default {
     HomeMenu: () => import("@/containers/home/HomeMenu.vue"),
     ButtonScroll: () => import("@/components/buttons/ButtonScroll.vue"),
   },
+  methods: {
+    // 마우스 클릭: 섹션 이동
+    moveSectionUp: function () {
+      fullpage_api.moveSectionUp();
+    },
+  },
   computed: {
     ...mapState(["soundtrack"]),
   },
@@ -35,23 +43,24 @@ export default {
 <style scoped>
 .wrap {
   display: flex;
+  position: relative;
   width: 100%;
   height: 100%;
 }
 .logo-component {
-  position: fixed;
+  position: absolute;
   top: 10px;
   left: 10px;
 }
 .menu-component {
-  position: fixed;
+  position: absolute;
   right: 40px;
   top: 15vh;
 }
 .button-scroll {
-  position: fixed;
+  position: absolute;
   width: 200px;
-  right: 30px;
-  top: 90vh;
+  right: 40px;
+  bottom: 5vh;
 }
 </style>
