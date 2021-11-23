@@ -16,10 +16,11 @@ export default new Vuex.Store({
   ],
 
   state: {
+    isPlaying: false,
+
     // 사운드트랙
     // 오디오 플레이어
     soundtrack: null,
-    isPlaying: false,
     ottData: [{name: "watcha", ottUrl:"" }, {name: "wavve",ottUrl:""}, {name: "netfilx",ottUrl:""}],
     playingTrack: "",
     playingGenre: "",
@@ -27,7 +28,6 @@ export default new Vuex.Store({
     // API 요청 리스트
     selectedGenre: "",
     playList: [    ],
-
 
     // Home 페이지
     onHover: [false,false, false, false, false, false],
@@ -37,12 +37,23 @@ export default new Vuex.Store({
     isHover: function(state) {
       return state.onHover.some(item => item === true)
     },
+
+    shorttenTrackTitle: function(state) {
+      if(state.soundtrack.title.length > 24){
+        return state.soundtrack.title.substr(0, 24) + "..."
+      }else{
+        return state.soundtrack.title
+      }
+    },
   },
 
   mutations: {
     // 사운드트랙
     SET_SOUNDTRACK: function (state, idx) {
       return state.soundtrack = state.playList[idx]
+    },
+    SET_ISPLAYING: function (state, bool) {
+      return state.isPlaying = bool
     },
     SET_PLAYINGTRACK: function (state, idx) {
       return state.playingTrack = idx
@@ -72,6 +83,7 @@ export default new Vuex.Store({
     // 사운드트랙 클릭시 영화정보 
     PlayMusic: function ({commit, state}, idx) {
       commit("SET_SOUNDTRACK", idx)
+      commit("SET_ISPLAYING", true)
       commit("SET_PLAYINGTRACK", idx)
       commit("SET_PLAYINGGENRE")
       const movie_id = state.soundtrack.movie_id.id
@@ -88,8 +100,10 @@ export default new Vuex.Store({
         console.log(err)
       })
     },
-    
 
+    SetPlaying: function({commit, state}) {
+      commit("SET_ISPLAYING", !state.isPlaying)
+    },
 
     // 랜딩페이지
     // 선택된 이미지 마우스 호버 감지

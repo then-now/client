@@ -20,13 +20,14 @@
         <rect
           v-if="soundtrack"
           :key="soundtrack.id"
-          :class="'lp ' + (soundtrack ? 'running' : 'paused')"
+          :class="'lp ' + (isPlaying ? 'running' : 'paused')"
           x="51"
           y="100"
           width="770"
           height="770"
           rx="385"
           fill="url(#lp-playing)"
+          @click="setPlayingState"
         />
       </transition>
 
@@ -62,7 +63,8 @@
         height="744"
         fill="url(#tonearm)"
         transform-origin="90% 28%"
-        :transform="soundtrack ? 'rotate(5 -400 -200)' : 'rotate(-15 0 0)'"
+        :transform="isPlaying ? 'rotate(5 -400 -200)' : 'rotate(-15 0 0)'"
+        @click="setPlayingState"
       />
       <transition name="fade">
         <text
@@ -73,7 +75,7 @@
           fill="#F6F5F4"
           font-size="bigger"
         >
-          {{ soundtrack.title }}
+          {{ shorttenTrackTitle }}
         </text>
       </transition>
       <transition name="fade">
@@ -151,7 +153,7 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapState, mapGetters } from "vuex";
 
 export default {
   name: "TurnTable",
@@ -159,12 +161,20 @@ export default {
     ButtonRound: () => import("@/components/buttons/ButtonRound.vue"),
   },
   computed: {
-    ...mapState(["soundtrack", "ottData"]),
+    ...mapState(["soundtrack", "isPlaying", "ottData"]),
+    ...mapGetters(["shorttenTrackTitle"]),
   },
 
   methods: {
     onClickstab: function () {
       this.$emit("moveSectionDown");
+    },
+    setPlayingState: function () {
+      if (this.soundtrack) {
+        const audio = document.getElementById("player");
+        this.isPlaying ? audio.pause() : audio.play();
+        this.$store.dispatch("SetPlaying");
+      }
     },
   },
 };
