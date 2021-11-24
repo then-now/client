@@ -202,6 +202,7 @@ export default {
   animation: rotate_image 3s linear infinite;
   animation-delay: 0.8s;
   transform-origin: 38.4% 56.3%;
+  cursor: pointer;
 }
 
 .running {
@@ -223,6 +224,7 @@ export default {
 .tonearm {
   transition: all 1.2s;
   transition-timing-function: csubic-bezier(0.28, 0.79, 0.36, 1.18);
+  cursor: pointer;
 }
 .fade-enter-active,
 .fade-leave-active {

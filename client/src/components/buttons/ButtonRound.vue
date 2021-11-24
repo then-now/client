@@ -27,6 +27,9 @@ export default {
 </script>
 
 <style scoped>
+.button {
+  cursor: pointer;
+}
 .circle {
   width: 45px;
   height: 45px;

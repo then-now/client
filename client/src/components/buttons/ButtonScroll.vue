@@ -73,10 +73,23 @@ export default {
 
 <style scoped>
 .button {
+  animation: motion 0.5s linear 0s infinite alternate;
+  cursor: pointer;
   display: flex;
   height: 40px;
   width: 200px;
   align-items: center;
+}
+
+@keyframes motion {
+  0% {
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+  100% {
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
 }
 
 .text {
@@ -88,7 +101,7 @@ export default {
 
 .up {
   line-height: 15px;
-  color: #0d3f5c;
+  color: #a5a4a4;
 }
 
 .title {

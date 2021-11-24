@@ -8,7 +8,7 @@
     </div>
     <ButtonScroll
       class="button-scroll"
-      fill="#0D3F5C"
+      fill="#a5a4a4"
       title="explore our floors"
     />
   </div>
@@ -51,6 +51,6 @@ export default {
 .button-scroll {
   position: fixed;
   right: 40px;
-  margin-top: 5vh;
+  margin-top: 3vh;
 }
 </style>

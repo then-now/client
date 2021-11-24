@@ -70,6 +70,7 @@ export default {
   line-height: 14px;
   letter-spacing: 2px;
   text-align: right;
+  cursor: pointer;
 
   transition: all 0.5s;
   transition-timing-function: csubic-bezier(0.28, 0.79, 0.36, 1.18);

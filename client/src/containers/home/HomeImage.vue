@@ -100,6 +100,7 @@
     <rect x="740" y="101" width="418" height="766" fill="url(#building)" />
     <line y1="741.5" x2="1962" y2="741.5" stroke="#F6F5F4" stroke-width="5" />
     <rect
+      class="image-button"
       width="97"
       height="97"
       transform="translate(1006 154)"
@@ -111,6 +112,7 @@
       @click="moveSectionDown"
     />
     <rect
+      class="image-button"
       width="146"
       height="97"
       transform="translate(823 300)"
@@ -122,6 +124,7 @@
       @click="moveSectionDown"
     />
     <rect
+      class="image-button"
       width="97"
       height="97"
       transform="translate(909 452)"
@@ -133,6 +136,7 @@
       @click="moveSectionDown"
     />
     <rect
+      class="image-button"
       width="219"
       height="209"
       transform="translate(484 529)"
@@ -144,6 +148,7 @@
       @click="moveSectionDown"
     />
     <rect
+      class="image-button"
       width="164"
       height="95"
       transform="translate(805 744)"
@@ -385,7 +390,7 @@ export default {
     },
   },
   mounted() {
-    this.landing = setInterval(this.activateImage, 3500);
+    this.landing = setInterval(this.activateImage, 3200);
   },
 };
 </script>
@@ -394,5 +399,8 @@ export default {
 .toggle-image {
   transition: all 1.2s;
   transition-timing-function: csubic-bezier(0.28, 0.79, 0.36, 1.18);
+}
+.image-button {
+  cursor: pointer;
 }
 </style>

@@ -130,6 +130,7 @@ export default {
 .nav-button {
   width: 60px;
   height: 60px;
+  cursor: pointer;
 
   color: #a5a4a4;
   text-align: center;
@@ -181,6 +182,7 @@ export default {
   margin-top: 2px;
   padding: 3px;
   transition: all 0.1s;
+  cursor: pointer;
 }
 .sound-track-title {
   font-size: 15px;

@@ -61,6 +61,6 @@ export default {
   position: absolute;
   width: 200px;
   right: 40px;
-  bottom: 5vh;
+  bottom: 3vh;
 }
 </style>

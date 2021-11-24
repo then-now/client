@@ -173,11 +173,23 @@ export default {
   flex-direction: column;
   width: 400px;
   color: rgba(243, 236, 234, 0.6);
+
+  cursor: pointer;
 }
 .scrollButton:hover {
   color: rgb(255, 255, 255);
   transition: all 1.2s;
 }
+
+@keyframes motion {
+  0% {
+    margin-top: 0px;
+  }
+  100% {
+    margin-top: 10px;
+  }
+}
+
 .buttonText {
   text-align: center;
 }
@@ -191,13 +203,5 @@ export default {
 .slide-fade-leave-to {
   transform: translateX(10px);
   opacity: 0;
-}
-@keyframes motion {
-  0% {
-    margin-top: 0px;
-  }
-  100% {
-    margin-top: 10px;
-  }
 }
 </style>
