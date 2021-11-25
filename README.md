@@ -1,5 +1,5 @@
 <img src="./images/logo.gif" alt="update" width="1200px" />
-<h1 align="center"> La Dolce Vita 🎬</h1>
+<h1 align="center"> Then & Now 🎬</h1>
 
  >**OTT 유입을 위해 시각적이고 음악적인 요소를 활용한 고전 영화 콘텐츠 추천 서비스**
 
