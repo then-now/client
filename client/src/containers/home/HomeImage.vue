@@ -390,7 +390,7 @@ export default {
     },
   },
   mounted() {
-    this.landing = setInterval(this.activateImage, 3200);
+    this.landing = setInterval(this.activateImage, 1000);
   },
 };
 </script>
