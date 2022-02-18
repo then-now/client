@@ -22,7 +22,6 @@
         >
           {{ item.name }}
         </div>
-        <!-- <div class="highlight" id="levelCircle"></div> -->
       </div>
 
       <div class="sound-track-list">

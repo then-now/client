@@ -1,10 +1,8 @@
 <template>
   <div class="menu">
     <logo-image />
-
     <h1 class="menu title">Hope this building finds you in good mood</h1>
     <h2 class="menu subtitle">Select your mood bellow</h2>
-
     <br />
     <p
       v-for="(item, idx) in items"
@@ -45,12 +43,10 @@ export default {
   },
 
   methods: {
-    // 마우스 호버: 이미지 색상 변경
     hoverItem: function (e) {
       this.$store.dispatch("HoverSection", e.target.getAttribute("value"));
     },
 
-    // 마우스 클릭: 섹션 이동
     moveSectionDown: function (e) {
       this.$store.dispatch("GetMovieData", e.target.getAttribute("value"));
       fullpage_api.moveSectionDown();

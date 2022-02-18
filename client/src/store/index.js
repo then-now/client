@@ -1,11 +1,9 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
-// Axios 요청
 import axios from 'axios'
 import SERVER from '@/api/drf.js'
 
-// PersistedState
 import createPersistedState from 'vuex-persistedstate';
 
 Vue.use(Vuex)
@@ -18,19 +16,15 @@ export default new Vuex.Store({
   state: {
     isPlaying: false,
 
-    // 사운드트랙
-    // 오디오 플레이어
     soundtrack: null,
     ottData: [{name: "watcha", ottUrl:"" }, {name: "wavve",ottUrl:""}, {name: "netfilx",ottUrl:""}],
     playingTrack: "",
     playingGenre: "",
 
-    // API 요청 리스트
     selectedGenre: "",
-    playList: [    ],
+    playList: [ ],
 
-    // Home 페이지
-    onHover: [false,false, false, false, false, false],
+    onHover: new Array(6).fill(false),
   },
 
   getters: {
@@ -48,7 +42,6 @@ export default new Vuex.Store({
   },
 
   mutations: {
-    // 사운드트랙
     SET_SOUNDTRACK: function (state, idx) {
       return state.soundtrack = state.playList[idx]
     },
@@ -65,12 +58,10 @@ export default new Vuex.Store({
       return state.ottData = data
     },
 
-    // 랜딩페이지
     SET_ON_HOVER: function (state, selected_id) {
       return state.onHover.splice(selected_id, 1, !state.onHover[selected_id]);
     },
 
-    // 메인 페이지
     SET_GENRE: function (state, data) {
       return state.selectedGenre = data
     },
@@ -79,8 +70,8 @@ export default new Vuex.Store({
     },
 
   },
+
   actions: {
-    // 사운드트랙 클릭시 영화정보 
     PlayMusic: function ({commit, state}, idx) {
       commit("SET_SOUNDTRACK", idx)
       commit("SET_ISPLAYING", true)
@@ -96,23 +87,16 @@ export default new Vuex.Store({
         res.data.movie_movies.map(item => otts[item.ott_id-1]["ottUrl"] = item.ott_url)
         commit('SET_MOVIE_OTT', otts)
       })
-      .catch((err) => {
-        console.log(err)
-      })
     },
 
     SetPlaying: function({commit, state}) {
       commit("SET_ISPLAYING", !state.isPlaying)
     },
 
-    // 랜딩페이지
-    // 선택된 이미지 마우스 호버 감지
     HoverSection: function ({commit},selected_id) {
       commit("SET_ON_HOVER", selected_id)
     },
 
-    
-    // 장르에 대한 영화,노래정보 
     GetMovieData: function ({commit}, genre_id) {
       commit("SET_GENRE", genre_id)
       axios({
@@ -121,9 +105,6 @@ export default new Vuex.Store({
       })
       .then((res) => {
         commit('SET_MOVIE_DATA', res.data.tracks_genre)
-      })
-      .catch((err) => {
-        console.log(err)
       })
     },
 

@@ -44,23 +44,26 @@
     </div>
   </div>
 </template>
+
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script>
 export default {
   name: "ButtonScroll",
+
   props: {
     title: { type: String, default: "" },
     subTitle: { type: String, default: "" },
     fill: { type: String, default: "#F3ECEA" },
     type: { type: String, default: "up" },
   },
+
   data: function () {
     return {
       active: false,
     };
   },
+
   methods: {
-    // 마우스 클릭: 섹션 이동
     moveSectionUp: function () {
       fullpage_api.moveSectionUp();
     },

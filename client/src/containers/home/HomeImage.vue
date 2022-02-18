@@ -362,6 +362,7 @@ export default {
       activeImage: [false, false, false, false, false, false],
     };
   },
+  
   methods: {
     activateImage: function () {
       this.activeImage = [false, false, false, false, false, false];
@@ -369,21 +370,22 @@ export default {
         this.activeImage[_.random(1, 5)] = true;
       }
     },
-    // 마우스 호버: 이미지 색상 변경
+
     hoverImage: function (e) {
       this.$store.dispatch("HoverSection", e.target.getAttribute("value"));
     },
 
-    // 마우스 클릭: 섹션 이동
     moveSectionDown: function (e) {
       this.$store.dispatch("GetMovieData", e.target.getAttribute("value"));
       fullpage_api.moveSectionDown();
     },
   },
+
   computed: {
     ...mapState(["onHover"]),
     ...mapGetters(["isHover"]),
   },
+
   watch: {
     isHover: function () {
       this.activeImage = [false, false, false, false, false, false];

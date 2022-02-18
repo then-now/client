@@ -29,7 +29,6 @@ export default {
     ButtonScroll: () => import("@/components/buttons/ButtonScroll.vue"),
   },
   methods: {
-    // 마우스 클릭: 섹션 이동
     moveSectionUp: function () {
       fullpage_api.moveSectionUp();
     },

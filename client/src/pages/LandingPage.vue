@@ -69,49 +69,8 @@
 <script>
 export default {
   name: "LandingPage",
-  data() {
-    return {
-      idx: 0,
-      selectedMood: "Peace",
-      moods: [
-        "Quiet",
-        "Delight",
-        "Adorable",
-        "Twilight",
-        "Lilac",
-        "Passion",
-        "Calm",
-        "Pride",
-        "Prejudice",
-        "Holiday",
-        "Scent",
-        "Christmas",
-        "Dance",
-        "Rainbow",
-        "Impulsive",
-        "Charming",
-        "Honest",
-        "Gentle",
-        "Brave",
-        "Aggressive",
-        "Competitive",
-        "Evil",
-        "Sharp",
-        "Simple",
-        "Passive",
-        "Shy",
-        "Loud",
-        "Dynamic",
-        "Friendly",
-        "Persistent",
-        "Warm",
-        "Lazy",
-        "Sweet",
-      ],
-    };
-  },
+
   methods: {
-    // 마우스 클릭: 섹션 이동
     moveSectionDown: function () {
       fullpage_api.moveSectionDown();
     },
@@ -121,6 +80,7 @@ export default {
       this.idx %= 33;
     },
   },
+
   mounted() {
     this.landing = setInterval(this.setMood, 2000);
   },

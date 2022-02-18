@@ -13,17 +13,19 @@
     />
   </div>
 </template>
+
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script>
 export default {
   name: "MoviePage",
+
   components: {
     TrackList: () => import("@/containers/movie/TrackList.vue"),
     TurnTable: () => import("@/containers/movie/TurnTable.vue"),
     ButtonScroll: () => import("@/components/buttons/ButtonScroll.vue"),
   },
+
   methods: {
-    // 마우스 클릭: 섹션 이동
     moveSectionUp: function () {
       fullpage_api.moveSectionUp();
     },

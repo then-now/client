@@ -29,9 +29,9 @@ export default {
     HomePage: () => import("@/pages/HomePage.vue"),
     MoviePage: () => import("@/pages/MoviePage.vue"),
   },
+
   data() {
     return {
-      // fullpage 옵션 설정
       options: {
         anchors: ["landing", "home", "main"],
         sectionsColor: ["#0D3F5C", "#0D3F5C", "#F6F5F4"],
@@ -39,13 +39,15 @@ export default {
       },
     };
   },
+
   mounted() {
-    // fullpage 스크롤 기능
     fullpage_api.setAllowScrolling(false);
   },
+
   computed: {
     ...mapState(["soundtrack"]),
   },
+
   updated() {
     this.$nextTick(function () {
       if (this.soundtrack) {
