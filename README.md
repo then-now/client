@@ -6,8 +6,8 @@
 </div>
 
  >**OTT 유입을 위해 시각적이고 음악적인 요소를 활용한 고전 영화 콘텐츠 추천 서비스**
-
- > 사이트 이동: https://boring-swartz-cc943b.netlify.app/
+ >
+ > 사이트 이동: https://then-now.netlify.app/
 
 </hr>
 </br>
