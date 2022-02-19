@@ -200,33 +200,7 @@ MZ세대의 정신 건강 및 스트레스 관리 활동은 ‘맛있는 음식�
 
 ## 🤔 Retrospect
 
-### **태연**
-
-Front에서 원하는 데이터를 기준으로1) Genre를 기준으로 영화의 ost정보를 포함하는 Track의 정보, 2) Movie의 정보 두 가지의 데이터를 API를 통해 보내줘야 하기 때문에, M:N관계로 이루어진 모델을 이용하여 Serializer ( GenreListSerializer, MovieSerializer) 를 생성하였습니다.
-
-M:N으로 이루어진 Genre, Movie의 두 모델의 관계를 통해 중개 테이블인 Track의 정보를 뽑기 위해서는 역참조를 사용하였으며, 중첩된 형태로 데이터를 뽑아내기 위해서 DRF에서 Nested Serializer을 사용했습니다.
-
-1:N의 관계로 Genre를 기준으로 related_name으로 연결된 Track모델의 genre_id와 연결을 시키고 Movie기준으로 두개의 부모가 존재하기 때문에 Nested Serializer을 사용했습니다.
-
-
-
-```python
-   def to_representation(self, instance):
-     response = super().to_representation(instance)
-     response["movie_id"] = MovieSerializer(instance.movie_id).data
-     return response
-```
-
-<img src="./images/postman.png" alt="update" width="1200px" /> 
-
-to_representation을 이용하여 Genre를 기준으로 트랙을 받아온 이후, 트랙이 가지고 있는 영화의 id정보를 통해 영화의 나머지 정보까지 받아올 수 있었습니다. related_name을 이용한 역참조 방법과, 1:N관계를 지닌 Movie: Track의 관계를 통한 Nest Serializer방법을 학습 할 수 있었습니다.
-
-2주 간의 프로젝트를 진행하면서 기획부터 배포까지 전반적으로 흘러가는 모든 과정을 경험해볼 수 있었다. 기획을 처음에 전체적으로 구성을 해두고 시작하니까 모델의 변경도 없고 코드를 구성하는데 있어 훨씬 수월했던 것 같다. 실수로 인해 정말 간단한 오류였지만 해결을 못해서 힘들었던 경험도 있었지만 하나하나 해가면서 성장할 수 있었던 시간이었고, 특히 팀원인 상준님과 함께해서 든든했다 ^&^
-
-<br/>
-<br/>
-
-### **상준**
+### Vuex
 
 Vuex를 활용해서 Vue의 상태관리와 라이프사이클을 이해하게 된 프로젝트 였습니다.
 Dipatch를 통해 Action를 호출하고, Commit을 통해 Mutation을 호출하고 이후 State를 변경하는 과정을 이해하게 되었습니다. 
@@ -253,3 +227,32 @@ State를 관리하면서, Vue 컴포넌트의 라이프사이클에 대한 이�
 ```
 
 리엑트에서 상태관리와 컴포넌트 라이프 사이클에 대해 이해가 조금 부족하다고 생각했는데, Vue를 사용하면서 조금은 다르지만 직관적으로 이해를 하게 된 계기가 되었습니다. 태연님이랑 함께 프로젝트를 하게되면서 즐겁게 효율적으로 완성도 높은 프로젝트를 할 수 있어서 좋았습니다.
+
+<br/>
+<br/>
+
+
+### Nested Serializer
+
+Front에서 원하는 데이터를 기준으로1) Genre를 기준으로 영화의 ost정보를 포함하는 Track의 정보, 2) Movie의 정보 두 가지의 데이터를 API를 통해 보내줘야 하기 때문에, M:N관계로 이루어진 모델을 이용하여 Serializer ( GenreListSerializer, MovieSerializer) 를 생성하였습니다.
+
+M:N으로 이루어진 Genre, Movie의 두 모델의 관계를 통해 중개 테이블인 Track의 정보를 뽑기 위해서는 역참조를 사용하였으며, 중첩된 형태로 데이터를 뽑아내기 위해서 DRF에서 Nested Serializer을 사용했습니다.
+
+1:N의 관계로 Genre를 기준으로 related_name으로 연결된 Track모델의 genre_id와 연결을 시키고 Movie기준으로 두개의 부모가 존재하기 때문에 Nested Serializer을 사용했습니다.
+
+
+
+```python
+   def to_representation(self, instance):
+     response = super().to_representation(instance)
+     response["movie_id"] = MovieSerializer(instance.movie_id).data
+     return response
+```
+
+<img src="./images/postman.png" alt="update" width="1200px" /> 
+
+to_representation을 이용하여 Genre를 기준으로 트랙을 받아온 이후, 트랙이 가지고 있는 영화의 id정보를 통해 영화의 나머지 정보까지 받아올 수 있었습니다. related_name을 이용한 역참조 방법과, 1:N관계를 지닌 Movie: Track의 관계를 통한 Nest Serializer방법을 학습 할 수 있었습니다.
+
+2주 간의 프로젝트를 진행하면서 기획부터 배포까지 전반적으로 흘러가는 모든 과정을 경험해볼 수 있었다. 기획을 처음에 전체적으로 구성을 해두고 시작하니까 모델의 변경도 없고 코드를 구성하는데 있어 훨씬 수월했던 것 같다. 실수로 인해 정말 간단한 오류였지만 해결을 못해서 힘들었던 경험도 있었지만 하나하나 해가면서 성장할 수 있었던 시간이었고, 특히 팀원인 상준님과 함께해서 든든했다 ^&^
+
+
