@@ -1,5 +1,9 @@
-<img src="./images/logo.gif" alt="update" width="1200px" />
-<h1 align="center"> Then & Now 🎬</h1>
+<div align="center">
+  <br />
+  <img src="./images/logo.gif" alt="update" width="600px" />
+  <h1>Then & Now 🎬</h1>
+  <br />
+</div>
 
  >**OTT 유입을 위해 시각적이고 음악적인 요소를 활용한 고전 영화 콘텐츠 추천 서비스**
 
@@ -77,6 +81,7 @@ MZ세대의 정신 건강 및 스트레스 관리 활동은 ‘맛있는 음식�
 | 김태연 |     김태연 ( Back-End )      |
 | 손상준 | 손상준 ( Front-End, Deploy ) |
 <br/>
+
 <div id="4"></div>
 
 ## 🧾 Team Rules
@@ -104,7 +109,8 @@ MZ세대의 정신 건강 및 스트레스 관리 활동은 ‘맛있는 음식�
 <br/>
 <hr/>
 <br/>
-<div id="4"></div>
+
+<div id="5"></div>
 
 ## 🛠 Languages and Tools
 
@@ -118,7 +124,7 @@ MZ세대의 정신 건강 및 스트레스 관리 활동은 ‘맛있는 음식�
 
 
 
-<div id="5"></div>
+<div id="6"></div>
 
 ## 📚 Architecture Diagram
 
@@ -131,7 +137,7 @@ MZ세대의 정신 건강 및 스트레스 관리 활동은 ‘맛있는 음식�
 | :---------------------------------------------------------: |:---------------------------------------------------------: | :---------------------------------------------------------: |
 | <img src="./images/landing.gif" alt="norecommend" width="400px" /> | <img src="./images/intro.gif" alt="norecommend" width="400px" /> |<img src="./images/main.gif" alt="recommend" width="400px" /> |
 
-<div id="5"></div>
+<div id="7"></div>
 
 ## 💡 Main Function
 
@@ -165,7 +171,7 @@ MZ세대의 정신 건강 및 스트레스 관리 활동은 ‘맛있는 음식�
 | <img src="./images/7.gif" alt="update" width="1200px" /> |
 
 
-
+<div id="8"></div>
 
 ## 💻 Installation
 
@@ -196,7 +202,7 @@ MZ세대의 정신 건강 및 스트레스 관리 활동은 ‘맛있는 음식�
 >$ npm run serve
 
 
-
+<div id="9"></div>
 
 ## 🤔 Retrospect
 
